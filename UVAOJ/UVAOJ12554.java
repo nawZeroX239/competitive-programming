@@ -39,7 +39,7 @@ public class UVAOJ12554 {
 				end=true;
 			}
 			
-			if(person==-1 && !end) i=-1; // everyone has already sang
+			if(person==-1 && !end) i=-1; // everyone has already sang at least once
 			if(i+1==K && end == false) i=-1; // not everyone has sang yet
 			person++;
 		}
