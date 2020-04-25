@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <unordered_set>
 
 using namespace std;
 
@@ -12,11 +13,10 @@ int main() {
 	long sum = 0;
 	int c, s;
 	bool b;
+	unordered_set<int> uset;
 	while (scanf("%d", &n) && n > 0) {
 		sum = 0;
 		b = true;
-		for (int i = 1; i <= n; i++)
-			cars[i] = -1;
 		for (int i = 1; i <= n; i++) {
 			scanf("%d%d", &c, &s);
 			//printf(" i+s:%d ", i + s);
@@ -24,24 +24,14 @@ int main() {
 			if (!b)
 				continue;
 
-			if (s > 0 && i+s<=n) {
-				if (cars[i + s] > -1)
-					b = false;
-				else
-					cars[i + s] = c;
-			} else if (s < 0 && i+s>0) {
-				if (cars[i + s] > -1)
-					b = false;
-				else
-					cars[i + s] = c;
-			} else if(s==0){
-				cars[i] = c;
-			} else {
-				//printf(" false ");
+			if (i+s<1 || i+s>n || (i + s > 0 && i + s < n+1 
+				&& uset.find(i + s) != uset.end())) {
 				b = false;
+			} else {
+				uset.insert(i + s);
+				cars[i + s] = c;
 			}
 
-			
 		}
 		//printf(" sum:%d ", sum);
 		if (sum != 0 || !b) {
@@ -52,6 +42,8 @@ int main() {
 				printf(" %d", cars[i]);
 			printf("\n");
 		}
+
+		uset.clear();
 	}
 	return 0;
 }
