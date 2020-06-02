@@ -46,7 +46,6 @@ int main() {
 		while (K) {
 			for(i=0; i<R; ++i)
 				for (j = 0; j < C; ++j) {
-					// b[i][j] = a[i][j];
 					//printf("(a[i][j]+1)%%N %d \n", (a[i][j] + 1) % N);
 
 					if (i + 1 < R &&  (a[i][j] + 1)%N== a[i + 1][j]) {
