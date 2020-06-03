@@ -32,7 +32,6 @@ int main() {
 	int i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
 	cin >> n >> t >> line;
 	while (t) {
-
 		for(i=1; i<n; )
 		if (line[i - 1] == 'B' && line[i] == 'G') {
 			swap(line[i - 1], line[i]);
