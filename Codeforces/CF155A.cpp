@@ -27,6 +27,7 @@ int a, b, c, d, e, f, i, j, k, l, m, n, o, q, r, s, t, u, v, w, x, y, z;
 int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
+	
 	int ans, a, b;
 	scanf("%d%d", &n, &c);
 	a = b = c;
