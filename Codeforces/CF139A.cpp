@@ -27,24 +27,22 @@ int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 	int a[7] = {};
-	int n, s;
+	int n, s, ans;
 	cin >> n;
-	s = 0;
-	for (int i = 0; i < 7; ++i) {
+	for (int i = 0; i < 7; ++i)
 		cin >> a[i];
-		s += a[i];
-	}
-	n = n % s;
-	if (n > 0)
+
+
+	while (n > 0) {
 		for (int i = 0; i < 7; ++i) {
-			n -= a[i];
-			if (n < 1) {
-				printf("%d\n", i + 1);
+			n = n - a[i];
+			if (n <= 0) {
+				ans = i + 1;
 				break;
 			}
 		}
-	else
-		printf("1\n");
+	}
 
+	printf("%d\n", ans);
 	return 0;
 }
