@@ -28,22 +28,22 @@ int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 	int n;
-	while (cin >> n) {
+	while (scanf("%d", &n) == 1) {
 		if (n == 0)
 			break;
-		bitset<32> foo(n), odd, even;
-		for (int i = 0, j = 1; i < 32; ++i) {
-			if (foo[i]) {
-				if (j&1) {
-					odd.set(i);
+		int even, odd;
+		even = odd = 0;
+		for (int i = 0, j=0; i < 31; ++i) {
+			if (n & (1 << i)) {
+				if (j & 1) {
+					even = even | (1 << i);
 				} else {
-					even.set(i);
+					odd = odd | (1 << i);
 				}
 				++j;
 			}
-
 		}
 
-		cout << odd.to_ulong() << ' ' << even.to_ulong()<< '\n';
+		printf("%d %d\n", odd, even);
 	}
 }
