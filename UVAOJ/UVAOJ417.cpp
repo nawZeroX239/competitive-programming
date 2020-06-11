@@ -30,6 +30,7 @@ bool comp(string& a, string& b) {
 	return a.length() < b.length();
 }
 
+// its easier to solve the problem with queue
 int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
