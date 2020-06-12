@@ -45,7 +45,6 @@ int main() {
 				lo = itr->second;
 			dp[x] = hi;
 			ans = max(ans, hi - lo);
-			// cout << "lo " << lo << "hi " << hi << '\n';
 			++hi;
 		}
 		
