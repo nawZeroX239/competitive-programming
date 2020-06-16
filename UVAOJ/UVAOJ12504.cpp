@@ -56,10 +56,6 @@ int main() {
 			dict[key] = value;
 		}
 		getline(cin, line);
-		//for (auto it = dict.begin(); it != dict.end(); ++it) {
-		//	cout << it->first << " " << it->second << '\n';
-		//}
-		int eq = 1;
 		n = line.length();
 		for (int i = 1; i < n - 1; ++i) {
 			string key, value;
@@ -73,7 +69,6 @@ int main() {
 				++i;
 			}
 			auto it = dict.find(key);
-			// cout << "new [" << key << ", " << value+"]" << '\n';
 			if (it == dict.end()) {
 				add.insert(key);
 			} else if (it->second != value) {
