@@ -24,7 +24,7 @@
 #include <utility>
 #include <vector>
 
-#define EPS 1e-2
+#define EPS 1e-10
 #define N 30001
 #define ll long long
 #define pi pair<ll, ll>
