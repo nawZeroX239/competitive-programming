@@ -26,7 +26,7 @@
 #include <vector>
 
 #define EPS 1e-100
-#define N 30001
+#define N 10000
 #define ll long long
 #define pi pair<ll, ll>
 
@@ -46,12 +46,13 @@ inline void split(vector<string>& vect, string& str, char delim) {
     if (each.size()) vect.push_back(each);
 }
 
-int arr[10001][10001];
-        int col[10001] = {};
+int arr[N][N];
+vector<int> v(N);
+int col[N];
 
 int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     int n, m, r, c, num;
     while (cin >> n >> m) {
         vector<vector<int>> adj(n);
@@ -64,12 +65,11 @@ int main() {
 
             for (int j = 0; j < c; ++j)
                 cin >> arr[i][adj[i][j]];
+            col[i] = 0;
         }
-        // cout << "*END*\n";
-
-        cout << m << ' ' << n << '\n';
+        // cout << m << ' ' << n << '\n';
+        printf("%d %d\n", m, n);
         for (int i = 0; i < m; ++i) {
-            vector<int> v(n);
             int sz = 0;
             for (int j = 0; j < n; ++j) {
                 if (col[j] < adj[j].size() && adj[j][col[j]] == i) {
@@ -81,29 +81,33 @@ int main() {
                 }
             }
             if (sz == 0) {
-                cout << sz << "\n\n";
+                // cout << sz << "\n\n";
+                printf("%d\n\n", sz);
                 continue;
             }
-            cout << sz;
+            // cout << sz;
+            printf("%d", sz);
             for (int i = 0; i < n; ++i) {
                 if (v[i] != -1) {
-                    cout << ' ' << i+1;
+                    // cout << ' ' << i + 1;
+                    printf(" %d", i + 1);
                 }
             }
-            cout << '\n';
+            puts("");
             int first = 1;
             for (int j = 0; j < n; ++j) {
                 if (v[j] != -1) {
                     if (first) {
-                        cout << arr[j][v[j]];
+                        // cout << arr[j][v[j]];
+                        printf("%d", arr[j][v[j]]);
                         first = 0;
-                    }  else {
-                        cout << ' ' << arr[j][v[j]];
+                    } else {
+                        // cout << ' ' << arr[j][v[j]];
+                        printf(" %d", arr[j][v[j]]);
                     }
                 }
             }
-            cout << '\n';
-            
+            puts("");
         }
 
     }
