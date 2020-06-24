@@ -47,7 +47,7 @@ inline void split(vector<string>& vect, string& str, char delim) {
 }
 
 int arr[10001][10001];
-
+        int col[10001] = {};
 
 int main() {
 	ios_base::sync_with_stdio(0);
@@ -66,7 +66,7 @@ int main() {
                 cin >> arr[i][adj[i][j]];
         }
         // cout << "*END*\n";
-        int col[10001] = {};
+
         cout << m << ' ' << n << '\n';
         for (int i = 0; i < m; ++i) {
             vector<int> v(n);
