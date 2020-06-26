@@ -1,39 +1,29 @@
-
-class Quick_SegmentTree {
-    vector<int> v, segment;
-    int L, R;
-    int search(int i, int j, int si, int sj, int k) {
-        int mid = (i + j) / 2;
-        if (si<mid+1 && sj>mid) {
-            L = search(i, mid, si, mid, 2*k);
-            R = search(mid + 1, j, mid+1, sj, 2 * k + 1);
-            return (v[L] <= v[R] ? L : R);
-        }else if (i < j && sj <= mid) {
-           return search(i, mid, si, sj, 2 * k);
-        } else if (i< j && si > mid){
-            return search(mid + 1, j, si, sj, 2 * k + 1);
+class QuickSegmentTree {
+    vector<int> arr, st;
+    int mid(int i, int j) { return (i + j) >> 1; }
+    int left(int i) { return i << 1; }
+    int right(int i) { return (i << 1) + 1; }
+    void build(int L, int R, int k) {
+        if (L == R) st[k] = arr[L];
+        else {
+            build(L, mid(L, R), left(k));
+            build(mid(L, R) + 1, R, right(k));
+            st[k] = min(st[left(k)], st[right(k)]);
         }
-        return segment[k];
-    }
-
-    int build(int i, int j, int k) {
-        if (i < j) {
-            L = build(i, (i + j) / 2, 2 * k);
-            R = build((i + j) / 2 + 1, j, 2 * k + 1);
-            return (segment[k] = v[L] <= v[R] ? L : R);
-        }
-
-        return segment[k] = i;
     }
 public:
-    Small_SegmentTree(vector<int> &arr) {
-        v.assign(arr.begin(), arr.end());
-        segment.assign(2*arr.size(), 0);
-        build(0, arr.size()-1, 1);
+    QuickSegmentTree(vector<int>& _arr) {
+        arr.assign(_arr.begin(), _arr.end());
+        st.assign(4 * _arr.size(), 0);
+        build(0, _arr.size() - 1, 1);
     }
 
-    int search(int i, int j) {
-        return search(0, v.size()-1, i, j, 1);
+    int search(int i, int j, int L, int R, int k) {
+        if (i > R || j < L) return INT_MAX;
+        if (L >= i && R <= j) return st[k];
+        return min(search(i, j, L, mid(L, R), left(k)),
+            search(i, j, mid(L, R) + 1, R, right(k)));
     }
 
+    int search(int i, int j) {return search(i, j, 0, arr.size() - 1, 1);}
 };
