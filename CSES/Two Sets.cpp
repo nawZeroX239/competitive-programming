@@ -56,7 +56,7 @@ inline bool lb_pred(const pair<int, int>& left, int right) {
 	return left.first < right;
 }
 
-int P[N], Q[N];
+// int P[N], Q[N];
 
 int main() {
 	ios_base::sync_with_stdio(0);
@@ -67,12 +67,13 @@ int main() {
 	if (setSize == 0 ||(setSize%2 && n%2==0) || (setSize%2==0 && n%2)) cout << "NO\n";
 	else {
 		pSize = qSize = 0;
+		int* P = (int*)malloc(sizeof(int) * (setSize + 1));
+		int* Q = (int*)malloc(sizeof(int) * (setSize + 1));
 		for (lo = setSize, hi = setSize + 1; lo > 0; --lo, ++hi) {
 			if (pSize < setSize) {
 				P[pSize++] = lo;
 				P[pSize++] = hi;
-			}
-			else {
+			} else {
 				Q[qSize++] = lo;
 				Q[qSize++] = hi;
 			}
