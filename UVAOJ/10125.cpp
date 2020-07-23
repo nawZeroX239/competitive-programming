@@ -32,12 +32,12 @@ int n, arr[N];
 
 int solve() {
 	int ans = INT_MIN;
-	for (int i = 0; i < n; ++i) {
-		for (int j = i+1; j < n; ++j) {
+	for (int i = 0; i < n - 2; ++i) {
+		for (int j = i + 1; j < n - 1; ++j) {
 			for (int k = j + 1; k < n; ++k) {
 				int sum = arr[i] + arr[j] + arr[k];
-				int pos = upper_bound(arr, arr + n, sum) - arr - 1;
-				if (sum == arr[pos] && pos != i && pos != j && pos != k) {
+				int pos = lower_bound(arr, arr + n, sum) - arr;
+				if (pos<n && arr[pos]-sum == 0&& pos-i && pos-j && pos-k) {
 					// cout << arr[i] << " + " << arr[j] << " + " << arr[k] << " : " << pos << '\n';
 					ans = max(ans, sum);
 				}
@@ -52,7 +52,7 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
-	
+
 	while (cin >> n) {
 		if (n == 0) break;
 		for (int i = 0; i < n; ++i)
