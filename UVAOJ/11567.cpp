@@ -32,7 +32,6 @@ using namespace std;
 const long double PI = 3.14159265358979323846264338327950;
 const double EPS = 1e-9;
 const int cx[] = { -1, 1, 0, 0 }, cy[] = { 0, 0, -1, 1 };
-const int N = 1440;
 
 template <class T> T gcd(T a, T b) {
 	if (b == 0) { return a; }
@@ -55,7 +54,6 @@ int toInt(string& s) {
 //}
 //
 
-int arr[N];
 int main() {
 	ios_base::sync_with_stdio(false); 
 	cin.tie(NULL); 
