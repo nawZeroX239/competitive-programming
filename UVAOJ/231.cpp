@@ -72,6 +72,7 @@ int main() {
 
 		if (vi.size() == 0) break;
 		if (tc > 1) cout << '\n';
+		
 		//cout << "vi ";
 		//for (int i = 0; i < vi.size(); ++i) {
 		//	cout << vi[i] << ' ';
