@@ -60,7 +60,7 @@ int main() {
 	for (int i = 0; i < n; ++i) {
 		cin >> arr[i];
 	}	
-	ctr = 1;
+	ctr = 0;
 	prefix[arr[0]] = ctr;
 	for (int i = 1; i < n; ++i) {
 		cin >> ch;
